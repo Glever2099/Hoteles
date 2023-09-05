@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 08-08-2023 a las 12:52:17
+-- Tiempo de generación: 05-09-2023 a las 00:12:34
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -48,12 +48,18 @@ CREATE TABLE IF NOT EXISTS `habitacion` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_servi_habitacion` int NOT NULL,
-  `costo` int NOT NULL,
-  `moneda` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `habilitado` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_servi_habitacion` (`id_servi_habitacion`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `habitacion`
+--
+
+INSERT INTO `habitacion` (`id`, `nombre`, `id_servi_habitacion`, `habilitado`) VALUES
+(1, '105', 1, 'si'),
+(2, '104', 16, 'si');
 
 -- --------------------------------------------------------
 
@@ -102,8 +108,18 @@ CREATE TABLE IF NOT EXISTS `servi_habitacion` (
   `id` int NOT NULL AUTO_INCREMENT,
   `cantidad_persona` int NOT NULL,
   `descripcion` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `costo` int NOT NULL,
+  `moneda` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `servi_habitacion`
+--
+
+INSERT INTO `servi_habitacion` (`id`, `cantidad_persona`, `descripcion`, `costo`, `moneda`) VALUES
+(1, 1, 'cama simple', 1000, 'pesos argentinos'),
+(16, 2, 'cama doble', 2000, 'pesos argentinos');
 
 -- --------------------------------------------------------
 
