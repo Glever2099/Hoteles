@@ -19,20 +19,20 @@
             alert('Verifique que los datos que desea ingresar no se hayan registrado anteriormente');
             </script>";
         }else{
-            		$tipohabitacion = mysqli_query($conexion, "INSERT INTO `servi_habitacion`(`cantidad_persona`, `descripcion`, `costo`, `moneda`) VALUES ('".$cantPer."','".$tipo."','".$costo."','".$moneda."')");
-
+            $tipohabitacion = mysqli_query($conexion, "INSERT INTO `servi_habitacion`(`cantidad_persona`, `descripcion`, `costo`, `moneda`) VALUES ('".$cantPer."','".$tipo."','".$costo."','".$moneda."')");
+            if ($tipohabitacion) {
+                echo "<script language='javascript'> 
+                alert('Habitacion Registrada');
+                </script>";
+            } else {
+                echo "<script language='javascript'> 
+                alert('no se pudo registrar la habitacion');
+                </script>";
+            }
         }
 
 
-        if ($tipohabitacion) {
-            echo "<script language='javascript'> 
-            alert('Habitacion Registrada');
-            </script>";
-        } else {
-            echo "<script language='javascript'> 
-            alert('no se pudo registrar la habitacion');
-            </script>";
-        }
+        
         
     }
     
@@ -63,15 +63,15 @@
             <button id="guardar">Cargar</button>
         </form>
     </div>
-    <h2>Tipos de Habitaciones</h2>
+    <h2 class="b">Tipos de Habitaciones</h2>
     <?php 
             
                 include('conexion.php');
                 $habi = mysqli_query($conexion, "SELECT * FROM `servi_habitacion` WHERE 1");
                 while ($a = mysqli_fetch_array($habi)) {
                     echo "<div class='verHabi' >";
-                    echo "Cantidad de Personas".$a['cantidad_personas']." <br>";
-                    echo "Tipos de Camas".$a['descripcion']." <br>";
+                    echo "Cantidad de Personas: ".$a['cantidad_persona']." <br>";
+                    echo "Tipos de Camas: ".$a['descripcion']." <br>";
                     echo "$".$a['costo']." ".$a['moneda'];
                     echo "</div>";
                 }
