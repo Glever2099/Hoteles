@@ -1,0 +1,45 @@
+body{
+    background-color: #3f363a;
+}
+.cargar{
+    border: 2px solid black;
+    text-align: center;
+    margin: 0% 20%;
+    border-radius: 50px;
+    background-color: #cecbcb;
+}
+button{
+    font-size: 120%;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+}
+input{
+    width: 40%;
+    height: 10%;
+    border-radius: 10px;
+}
+select{
+    width: 30%;
+    height: 6%;
+    border-radius: 10px;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+.verHabi{
+    display: inline-block;
+    color: white;
+    text-align: center;
+    background-color: #380017;
+    padding: 20px;
+    width: auto;
+    border-radius: 10px;
+    margin: 40px;
+    box-shadow: 3px 5px 15px black;
+    transition: all 500ms ease;
+}
+.b{
+    color: white;
+}
