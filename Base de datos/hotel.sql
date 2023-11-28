@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 05-09-2023 a las 00:12:34
+-- Tiempo de generación: 28-11-2023 a las 00:27:30
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `habitacion` (
   `habilitado` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_servi_habitacion` (`id_servi_habitacion`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `habitacion`
@@ -59,7 +59,9 @@ CREATE TABLE IF NOT EXISTS `habitacion` (
 
 INSERT INTO `habitacion` (`id`, `nombre`, `id_servi_habitacion`, `habilitado`) VALUES
 (1, '105', 1, 'si'),
-(2, '104', 16, 'si');
+(2, '104', 16, 'si'),
+(3, '99', 17, 'si'),
+(4, '6546', 18, 'si');
 
 -- --------------------------------------------------------
 
@@ -80,7 +82,14 @@ CREATE TABLE IF NOT EXISTS `reserva` (
   `cantidad_pago` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_habitacion` (`id_habitacion`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `reserva`
+--
+
+INSERT INTO `reserva` (`id`, `id_habitacion`, `ingreso`, `retiro`, `comentario`, `acompaniantes`, `metodo_pago`, `estado_pago`, `cantidad_pago`) VALUES
+(1, 1, '2023-11-01 10:00:00', '2023-11-02 10:00:00', 'ththt', 0, 'efectivo', 'pago', 1000);
 
 -- --------------------------------------------------------
 
@@ -111,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `servi_habitacion` (
   `costo` int NOT NULL,
   `moneda` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `servi_habitacion`
@@ -119,7 +128,9 @@ CREATE TABLE IF NOT EXISTS `servi_habitacion` (
 
 INSERT INTO `servi_habitacion` (`id`, `cantidad_persona`, `descripcion`, `costo`, `moneda`) VALUES
 (1, 1, 'cama simple', 1000, 'pesos argentinos'),
-(16, 2, 'cama doble', 2000, 'pesos argentinos');
+(16, 2, 'cama doble', 2000, 'pesos argentinos'),
+(17, 3, 'Matrimonial', 1, 'Bitcoin'),
+(18, 1, 'Matrimonial', 22, 'Folares');
 
 -- --------------------------------------------------------
 

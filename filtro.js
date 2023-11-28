@@ -17,3 +17,20 @@ document.addEventListener("DOMContentLoaded", function() {
         miFuncion();
     });
 });
+
+
+//crear los formularios de los acompañantes
+var selectA = document.getElementById("seleccion");
+var resultado = document.getElementById("resultado");
+
+selectA.addEventListener("change", function() {
+  var cantidad = parseInt(selectA.value);
+
+  resultado.innerHTML = "";
+
+  for (var i = 0; i < cantidad; i++) {
+    let formhtml = "<h2>Datos de Acompañante " + (i + 1) + "</h2><h2>Nombre Completo</h2> <input type='text' name='nomA" + (i + 1) + "'> <br><h2>DNI</h2> <input type='text' name='nomA" + (i + 1) + "'> <br><h2>Genero</h2> <input type='text' name='nomA" + (i + 1) + "'> <br><h2>Ocupacion</h2> <input type='text' name='nomA" + (i + 1) + "'> <br> <hr>";
+    
+    resultado.innerHTML += formhtml; 
+  }
+});

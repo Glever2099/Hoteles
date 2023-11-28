@@ -38,61 +38,45 @@
     
 ?>
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Incluye Bootstrap CSS -->
+    <title>Document</title>
     <link rel="stylesheet" href="estilo.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <title>Formulario de Habitaciones</title>
-    <style>
-        body{
-        background-color: #3f363a !important;
-        }
-    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 <body>
-    <div class="container mt-5">
-        <div class="cargar">
-            <form action="" method="post">
-                <h2>Cantidad de Personas</h2>
-                <div class="mb-3">
-                    <input type="number" name="cantPer" class="form-control">
-                </div>
-                <h2>Tipo de Camas</h2>
-                <div class="mb-3">
-                    <input type="text" name="tipo" class="form-control">
-                </div>
-                <h2>Costo</h2>
-                <div class="mb-3">
-                    <input type="number" name="costo" class="form-control">
-                </div>
-                <h2>Moneda</h2>
-                <div class="mb-3">
-                    <input type="text" name="moneda" class="form-control">
-                </div>
-                <br>
-                <button id="guardar" class="btn btn-dark">Cargar</button>
-            </form>
-        </div>
+    <div class="cargar">
+        <form action="" method="post">
+            <h2>Cantidad de Personas</h2> 
+            <input type="number" name="cantPer"> <br>
+            <h2>Tipo de camas</h2> 
+            <input type="text" name="tipo"> <br>
+            <h2>Costo</h2> 
+            <input type="number" name="costo"> <br>
+            <h2>Moneda</h2> 
+            <input type="text" name="moneda"> <br>
+            <br>
+            <button id="guardar">Cargar</button>
+        </form>
     </div>
     <h2 class="b">Tipos de Habitaciones</h2>
     <?php 
-        include('conexion.php');
-        $habi = mysqli_query($conexion, "SELECT * FROM `servi_habitacion` WHERE 1");
-        while ($a = mysqli_fetch_array($habi)) {
-            echo "<div class='verHabi'>";
-            echo "Cantidad de Personas: " . $a['cantidad_persona'] . " <br>";
-            echo "Tipos de Camas: " . $a['descripcion'] . " <br>";
-            echo "$" . $a['costo'] . " " . $a['moneda'];
-            echo "</div>";
-        }
-    ?>
-    
-    <!-- Incluye Bootstrap JS y Popper.js (requerido por Bootstrap) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@2.9.3/dist/umd/popper.min.js"></script>
+            
+                include('conexion.php');
+                $habi = mysqli_query($conexion, "SELECT * FROM `servi_habitacion` WHERE 1");
+                while ($a = mysqli_fetch_array($habi)) {
+                    echo "<div class='verHabi' >";
+                    echo "Cantidad de Personas: ".$a['cantidad_persona']." <br>";
+                    echo "Tipos de Camas: ".$a['descripcion']." <br>";
+                    echo "$".$a['costo']." ".$a['moneda'];
+                    echo "</div>";
+                }
+                
+                
+        ?>
 </body>
 </html>
-

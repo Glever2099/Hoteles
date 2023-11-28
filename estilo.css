@@ -1,5 +1,12 @@
 body{
-    background-color: #3f363a !important;
+    background-color: #3f363a;
+}
+.cargar{
+    border: 2px solid black;
+    text-align: center;
+    margin: 0% 20%;
+    border-radius: 50px;
+    background-color: #cecbcb;
 }
 button{
     font-size: 120%;
@@ -8,8 +15,8 @@ button{
     border-radius: 10px;
 }
 input{
-    width: 30%;
-    height: 6%;
+    width: 40%;
+    height: 10%;
     border-radius: 10px;
 }
 select{
@@ -21,41 +28,18 @@ a{
     text-decoration: none;
     color: white;
 }
-h2{
-    color: #fff !important;
-}
-.b {
-    color: #000000;
-    text-align: center; /* Centra el texto en el título */
-    margin: 20px 0; /* Agrega espacio superior e inferior */
-}
-.verHabi {
-    display: inline-block;
-    position: relative;
-    color: white;
-    text-align: center;
-    background-color: #380017;
-    left: 6%;
-    padding: 10px;
-    width: 200px;    
-    border-radius: 10px;
-    margin: 10px; 
-    box-shadow: 3px 5px 15px black;
-    transition: all 500ms ease;
-}
-
-.verHabi h2 {
-    font-size: 18px; /* Tamaño de fuente más pequeño */
-}
-.verHabi-ini {
+.verHabi{
     display: inline-block;
     color: white;
     text-align: center;
     background-color: #380017;
-    padding: 10px;
-    width: 200px;    
+    padding: 20px;
+    width: auto;
     border-radius: 10px;
-    margin: 10px; 
+    margin: 40px;
     box-shadow: 3px 5px 15px black;
     transition: all 500ms ease;
+}
+.b{
+    color: white;
 }
