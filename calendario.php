@@ -49,11 +49,16 @@
         }
 
         function hoy() {
-            window.location.reload();
+            fechaActual = new Date();
+            actualizarTabla();
+        }
+
+        function obtenerFechaEnFormatoISO(fecha) {
+            return fecha.toISOString().split('T')[0]; // Convierte la fecha a formato 'yyyy-mm-dd'
         }
 
         function actualizarTabla() {
-            const fechaSeleccionada = fechaActual.toISOString().split('T')[0]; // Convierte la fecha a formato 'yyyy-mm-dd'
+            const fechaSeleccionada = obtenerFechaEnFormatoISO(fechaActual);
 
             // Realiza la solicitud AJAX para obtener datos del servidor
             const url = `consulReserva.php`;
@@ -68,7 +73,7 @@
                     // Inicializa la tabla con las fechas
                     const headerRow = tabla.insertRow(0);
                     headerRow.innerHTML = '<th>Habitación / Fecha</th>';
-                    let tempFecha = new Date(fechaSeleccionada);
+                    let tempFecha = new Date(fechaSeleccionada + 'T00:00:00'); // Ajustar la fecha a la medianoche
 
                     for (let i = 0; i < numDias; i++) {
                         const th = document.createElement('th');
@@ -85,8 +90,7 @@
 
                         for (let i = 0; i < numDias; i++) {
                             const td = row.insertCell(-1);
-                            const fecha = new Date(fechaActual);
-                            fecha.setDate(fecha.getDate() + i);
+                            const fecha = new Date(fechaActual.getFullYear(), fechaActual.getMonth(), fechaActual.getDate() + i);
 
                             // Buscar reservas para esta habitación y fecha
                             const reservasHabitacion = data.reservas.filter(reserva => reserva.id_habitacion === habitacion.id);
@@ -106,10 +110,6 @@
                 })
                 .catch(error => console.error('Error en la solicitud AJAX:', error));
         }
-
-
-
-        
 
         // Inicialmente, actualizamos la tabla con la fecha actual
         actualizarTabla();

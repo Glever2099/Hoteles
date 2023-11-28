@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 28-11-2023 a las 00:27:30
+-- Tiempo de generación: 28-11-2023 a las 14:33:38
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -32,8 +32,8 @@ CREATE TABLE IF NOT EXISTS `acompaniante` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `dni` int NOT NULL,
-  `celular` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `pais_cuidad` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `genero` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ocupacion` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -82,14 +82,16 @@ CREATE TABLE IF NOT EXISTS `reserva` (
   `cantidad_pago` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_habitacion` (`id_habitacion`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `reserva`
 --
 
 INSERT INTO `reserva` (`id`, `id_habitacion`, `ingreso`, `retiro`, `comentario`, `acompaniantes`, `metodo_pago`, `estado_pago`, `cantidad_pago`) VALUES
-(1, 1, '2023-11-01 10:00:00', '2023-11-02 10:00:00', 'ththt', 0, 'efectivo', 'pago', 1000);
+(1, 1, '2023-11-01 10:00:00', '2023-11-02 10:00:00', 'ththt', 0, 'efectivo', 'pago', 1000),
+(2, 3, '2023-11-29 00:00:00', '2023-12-02 00:00:00', 'aa', 2, 'efectivo', 'NULL', 5),
+(3, 4, '2023-11-29 00:00:00', '2023-12-02 00:00:00', 'aa', 0, 'efectivo', 'NULL', 5);
 
 -- --------------------------------------------------------
 
@@ -104,7 +106,18 @@ CREATE TABLE IF NOT EXISTS `reserva_cliente` (
   `id_reserva` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_cliente` (`id_cliente`,`id_reserva`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `reserva_cliente`
+--
+
+INSERT INTO `reserva_cliente` (`id`, `id_cliente`, `id_reserva`) VALUES
+(1, 1, 2),
+(2, 2, 0),
+(3, 3, 0),
+(4, 4, 3),
+(5, 5, 0);
 
 -- --------------------------------------------------------
 
@@ -149,7 +162,18 @@ CREATE TABLE IF NOT EXISTS `titular` (
   `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `genero` varchar(2) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `titular`
+--
+
+INSERT INTO `titular` (`id`, `nombre`, `ciudad`, `dni`, `ocupacion`, `celular`, `email`, `genero`) VALUES
+(1, 'aa', 'aa', 12, 'aa', '11', 'algo@email.com', 'aa'),
+(2, 'aa', 'aa', 12, 'aa', '11', 'algo@email.com', 'aa'),
+(3, 'aa', 'aa', 12, 'aa', '11', 'algo@email.com', 'aa'),
+(4, 'aa', 'aa', 12, 'aa', '11', 'algo@email.com', 'aa'),
+(5, 'aa', 'aa', 12, 'aa', '11', 'algo@email.com', 'aa');
 
 -- --------------------------------------------------------
 

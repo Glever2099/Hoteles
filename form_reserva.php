@@ -10,45 +10,52 @@
 </head>
 <body>
     <div class="cargar">
-        <form action="" method="post">
+        <form action="guardarReserva.php" method="post">
             <h1>Datos del Titular</h1>
             <div class="">
                 <h2>Nombre Completo</h2> 
-                    <input type="text" name="nomHabi"> <br>
+                    <input type="text" name="tituNom"> <br>
                 <h2>DNI</h2> 
-                    <input type="text" name="nomHabi"> <br>
+                    <input type="text" name="tituDNI"> <br>
                 <h2>Genero</h2> 
-                    <input type="text" name="nomHabi"> <br>
+                    <input type="text" name="tituGen"> <br>
                 <h2>Ocupacion</h2> 
-                    <input type="text" name="nomHabi"> <br>
+                    <input type="text" name="tituOcu"> <br>
                 <h2>Cuidad</h2> 
-                    <input type="text" name="nomHabi"> <br>
+                    <input type="text" name="tituCiudad"> <br>
                 <h2>Telefono Celular</h2> 
-                    <input type="text" name="nomHabi"> <br>
+                    <input type="text" name="tituTelC"> <br>
                 <h2>Email</h2> 
-                    <input type="text" name="nomHabi"> <br>
+                    <input type="email" name="tituEmail"> <br>
             </div>
             <hr>
             <h1>Datos de la Reserva</h1>
             <div>
                 <h2>Ingreso</h2> 
-                    <input type="text" name="nomHabi"> <br>
+                    <input type="date" name="ReserIngreso"> <br>
                 <h2>Salida</h2> 
-                    <input type="text" name="nomHabi"> <br>
+                    <input type="date" name="ReserSalida"> <br>
                 <h2>Comentario</h2> 
-                    <input type="text" name="nomHabi"> <br>
+                    <input type="text" name="ReserCom"> <br>
                 <h2>Metodo de Pago</h2> 
-                    <input type="text" name="nomHabi"> <br>
+                    <input type="text" name="ReserMetodPago"> <br>
                 <h2>Cantidad de Pago</h2> 
-                    <input type="text" name="nomHabi"> <br>    
+                    <input type="number" name="ReserCantPago"> <br>    
             </div>
             <h2>Acompañantes</h2> 
-            <select id="seleccion">
+            <select id="seleccion" name="selection">
                 <option value="0">elige</option>
-                <option value="1">1 </option>
-                <option value="2">2 </option>
-                <option value="3">3 </option>
-            <!-- Puedes agregar más opciones según tus necesidades -->
+                <?php 
+                include 'conexion.php';
+                $sql1 = mysqli_query($conexion,"SELECT distinct cantidad_persona FROM servi_habitacion where 1 order by cantidad_persona asc");
+                $result1 = mysqli_num_rows($sql1);
+                if($result1 > 0){
+                    while ($rol1 = mysqli_fetch_array($sql1)) {
+                ?>
+                    <option value="<?php echo $rol1["cantidad_persona"]; ?>"><?php echo $rol1["cantidad_persona"]; ?></option>
+                <?php
+                    }}
+                ?>
             </select> <br> <hr>
             <h1>Datos de los Acompañantes</h1>
             <div id="resultado">

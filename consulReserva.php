@@ -1,4 +1,3 @@
-
 <?php
 // Conexión a la base de datos (reemplaza con tus propios datos de conexión)
 include('conexion.php');
