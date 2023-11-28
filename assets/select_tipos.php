@@ -23,7 +23,7 @@ if(isset($_GET['cantidad_persona'])) {
             $options .= '<option value="' . $row["descripcion"] . '">' . $row["descripcion"] . '</option>';
         }
 
-       s
+       
         echo $options;
     } else {
         echo "Error en la consulta SQL";
