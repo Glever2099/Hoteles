@@ -1,32 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+ 
     <title>Tabla con Reservas de Habitaciones</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: center;
-        }
-        .occupied {
-            background-color: red;
-        }
-        .available {
-            background-color: green;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
-    <h2>Calendario de Reservas</h2>
-    <button class="nav-btn" onclick="retrocederSemana()">Dias Anteriores</button>
-    <button class="nav-btn" onclick="avanzarSemana()">Dias Siguientes</button>
-    <button class="nav-btn" onclick="hoy()">Hoy</button>
 
-    <table>
+<?php include 'navbar.php'; ?>
+
+
+<div class="container mt-4">
+<h2>Calendario de Reservas</h2>
+
+        <button class="btn btn-primary mr-2" onclick="retrocederSemana()">Días Anteriores</button>
+        <button class="btn btn-primary mr-2" onclick="avanzarSemana()">Días Siguientes</button>
+        <button class="btn btn-primary mr-2" onclick="hoy()">Hoy</button>
+   
+
+    <table class="table table-bordered text-center">
+        
         <tr>
             <th>Habitación / Fecha</th>
         </tr>
@@ -35,7 +30,7 @@
 
     <script>
         const tabla = document.querySelector('table');
-        const numDias = 14;
+        const numDias = 8;
         let fechaActual = new Date();
 
         function retrocederSemana() {

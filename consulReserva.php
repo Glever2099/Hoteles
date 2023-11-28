@@ -1,6 +1,6 @@
 <?php
-// Conexión a la base de datos (reemplaza con tus propios datos de conexión)
-include('conexion.php');
+
+include('assets/conexion.php');
 
 $consultaReservas = "SELECT * FROM reserva";
 $resultadoReservas = $conexion->query($consultaReservas);
